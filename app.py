@@ -18,24 +18,6 @@ class Log(db.Model):
     fecha_y_hora = db.Column(db.DateTime, nullable=False)
     texto = db.Column(db.TEXT)
 
-#Crear la tabla si no existe
-with app.app_context():
-    db.create_all()
-
-    # texto2='mensaje de prueba'
-    # agregar_mensajes_log(texto2)
-
-#Funcion para ordenar los registros por fecha y hora
-def ordenar_por_fecha_y_hora(registros):
-    return sorted(registros, key=lambda x: x.fecha_y_hora,reverse=True)
-
-@app.route('/')
-def index():
-    #obtener todos los registros ed la base de datos
-    registros = Log.query.all()
-    registros_ordenados = ordenar_por_fecha_y_hora(registros)
-    return render_template('index.html',registros=registros_ordenados)
-
 mensajes_log = []
 #Funcion para agregar mensajes y guardar en la base de datos
 def agregar_mensajes_log(texto):
@@ -49,6 +31,26 @@ def agregar_mensajes_log(texto):
     )
     db.session.add(nuevo_registro)
     db.session.commit()
+
+
+#Crear la tabla si no existe
+with app.app_context():
+    db.create_all()
+
+    texto2='mensaje de prueba'
+    agregar_mensajes_log(texto2)
+
+#Funcion para ordenar los registros por fecha y hora
+def ordenar_por_fecha_y_hora(registros):
+    return sorted(registros, key=lambda x: x.fecha_y_hora,reverse=True)
+
+@app.route('/')
+def index():
+    #obtener todos los registros ed la base de datos
+    registros = Log.query.all()
+    registros_ordenados = ordenar_por_fecha_y_hora(registros)
+    return render_template('index.html',registros=registros_ordenados)
+
 
 #Token de verificacion para la configuracion
 TOKEN_VERIFICACION = "WSPBOT_TOKEN"
