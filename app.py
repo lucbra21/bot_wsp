@@ -37,8 +37,8 @@ def agregar_mensajes_log(texto):
 with app.app_context():
     db.create_all()
 
-    texto2='mensaje de prueba'
-    agregar_mensajes_log(texto2)
+    # texto2='mensaje de prueba'
+    # agregar_mensajes_log(texto2)
 
 #Funcion para ordenar los registros por fecha y hora
 def ordenar_por_fecha_y_hora(registros):
@@ -182,7 +182,7 @@ def enviar_mensajes_whatsapp(texto,number):
             "to": number,
             "text": {
                 "preview_url": True,
-                "body": "Introduccion al curso! https://youtu.be/6ULOE2tGlBM"
+                "body": "Que hermoso día no??? https://youtu.be/wDIKQRimYhI"
             }
         }
     elif "6" in texto:
@@ -378,7 +378,7 @@ def enviar_mensajes_whatsapp(texto,number):
 
     headers = {
         "Content-Type" : "application/json",
-        "Authorization" : "Bearer EAAHlp1ycWFIBO4KPCBRDPbiV8M1KslX63zKUJxOch0FHKzzNzCxAHGCMZC8Dpp1FZBlZCixT5gutoX18p6NqRpgIx2aVGmvcmO4BCxUZC8kdP7HZAK9NmdBZClYcc6fMxtKKvBLsdn5yD56ggmSAqBOzIZCzGCteUZCzgTQT3tKeBbNVcok8szH3kTmqktPaXM2X9t1Ttaz5j6VdZBM6zIs8rrEOEyQUZA0CKjslbduDN5kbwZD"
+        "Authorization" : "Bearer EAAHlp1ycWFIBO9sPV69jXa0YpvXUSjnn2GHD0r0ELJjz0wq8rWfK4Vr9ECsVIVbZA4mt1BcVTnhnNqNvPZAWIqHKFhg4CjG8Ngc9303XtCQsGZA8ioR2qhNHM9mwCRCxVjZBRYUielojMjbAdXhgUmLq9NUTBaJubSXVf8q8KNscUPD3rDwLSi6SPuxNMAxDAZA7yx3lZApc56eK9lnsRQe7zRqTQ1ta4UkMDdEZCeHe4dERQZDZD"
     }
 
     connection = http.client.HTTPSConnection("graph.facebook.com")
