@@ -120,7 +120,7 @@ def recibir_mensajes(req):
 
 def enviar_mensajes_whatsapp(texto,number):
     texto = texto.lower()
-    number = "5493416960613"
+    number = "543416960613"
     #Guardar Log en la BD
     agregar_mensajes_log(json.dumps('entro a enviar_mensajes_whatsapp'))
     if "hola" in texto:
@@ -131,10 +131,19 @@ def enviar_mensajes_whatsapp(texto,number):
             "to": number,
             "type": "text",
             "text": {
-                "preview_url": False,
+                # "preview_url": False,
                 "body": "Hola, ¿Cómo estás? Bienvenido."
             }
         }
+        # {
+        #     "messaging_product":"whatsapp",
+        #     "to":"543416960613",
+        #     "recipient_type": "individual",
+        #     "type":"text",
+        #     "text":{
+        #         "body": "Your Message Here"
+        #     }
+        # }
     elif "1" in texto:
         data = {
             "messaging_product": "whatsapp",
@@ -388,7 +397,7 @@ def enviar_mensajes_whatsapp(texto,number):
 
     try:
         # https://graph.facebook.com/v20.0/471320042729547/messages
-        connection.request("POST","https://graph.facebook.com/v20.0/471320042729547/messages", data, headers)
+        connection.request("POST","/v20.0/471320042729547/messages", data, headers)
         response = connection.getresponse()
         print(response.status, response.reason)
     except Exception as e:
