@@ -122,7 +122,7 @@ def enviar_mensajes_whatsapp(texto,number):
     texto = texto.lower()
     number = "5493416960613"
     #Guardar Log en la BD
-    agregar_mensajes_log('entro a enviar_mensajes_whatsapp')
+    agregar_mensajes_log(json.dumps('entro a enviar_mensajes_whatsapp'))
     if "hola" in texto:
         data={
             "messaging_product": "whatsapp",
