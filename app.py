@@ -387,7 +387,8 @@ def enviar_mensajes_whatsapp(texto,number):
 
     #Convertir el diccionaria a formato JSON
     data=json.dumps(data)
-
+    agregar_mensajes_log(json.dumps('llego hasta la linea 390'))
+    agregar_mensajes_log(data)
     headers = {
         "Content-Type" : "application/json",
         "Authorization" : "Bearer EAAHlp1ycWFIBO9sPV69jXa0YpvXUSjnn2GHD0r0ELJjz0wq8rWfK4Vr9ECsVIVbZA4mt1BcVTnhnNqNvPZAWIqHKFhg4CjG8Ngc9303XtCQsGZA8ioR2qhNHM9mwCRCxVjZBRYUielojMjbAdXhgUmLq9NUTBaJubSXVf8q8KNscUPD3rDwLSi6SPuxNMAxDAZA7yx3lZApc56eK9lnsRQe7zRqTQ1ta4UkMDdEZCeHe4dERQZDZD"
