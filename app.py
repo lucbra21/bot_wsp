@@ -15,12 +15,15 @@ db =SQLAlchemy(app)
 #Modelo de la tabla log
 class Log(db.Model):
     id = db.Column(db.Integer,primary_key=True)
-    fecha_y_hora = db.Column(db.DateTime, default=timezone.utc)
+    fecha_y_hora = db.Column(db.DateTime, nullable=False)
     texto = db.Column(db.TEXT)
 
 #Crear la tabla si no existe
 with app.app_context():
     db.create_all()
+
+    # texto2='mensaje de prueba'
+    # agregar_mensajes_log(texto2)
 
 #Funcion para ordenar los registros por fecha y hora
 def ordenar_por_fecha_y_hora(registros):
@@ -34,13 +37,16 @@ def index():
     return render_template('index.html',registros=registros_ordenados)
 
 mensajes_log = []
-
 #Funcion para agregar mensajes y guardar en la base de datos
 def agregar_mensajes_log(texto):
     mensajes_log.append(texto)
 
     #Guardar el mensaje en la base de datos
-    nuevo_registro = Log(texto=texto)
+    # Guardar el mensaje en la base de datos
+    nuevo_registro = Log(
+        texto=texto,
+        fecha_y_hora=datetime.now(timezone.utc)  # Agregamos explícitamente la fecha y hora
+    )
     db.session.add(nuevo_registro)
     db.session.commit()
 
@@ -370,7 +376,7 @@ def enviar_mensajes_whatsapp(texto,number):
 
     headers = {
         "Content-Type" : "application/json",
-        "Authorization" : "Bearer EAAHlp1ycWFIBO8ewzBvY1S7W98nAauLJ0jOhtiTTeasiEkiCw1q7MTNjmPZAX2wdGPqFxm1GoOSlJItUZCUt7dKizWcV2Wa9T7ZCOJpPN0gZBUYuQ9hZAENaokGPLkFiLiSaIMTNVBEvdnsLNm9mD8zcJxrNbZBDPRzd5tcxYZBVZBOrMpEYrgWxfOgyLuuzxgatsLi4OlYxvzIwTbZBa85mqILpVptzQdDACaJV1KQnZBos4ZD"
+        "Authorization" : "Bearer EAAHlp1ycWFIBO4KPCBRDPbiV8M1KslX63zKUJxOch0FHKzzNzCxAHGCMZC8Dpp1FZBlZCixT5gutoX18p6NqRpgIx2aVGmvcmO4BCxUZC8kdP7HZAK9NmdBZClYcc6fMxtKKvBLsdn5yD56ggmSAqBOzIZCzGCteUZCzgTQT3tKeBbNVcok8szH3kTmqktPaXM2X9t1Ttaz5j6VdZBM6zIs8rrEOEyQUZA0CKjslbduDN5kbwZD"
     }
 
     connection = http.client.HTTPSConnection("graph.facebook.com")
