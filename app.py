@@ -324,7 +324,7 @@ def enviar_mensajes_whatsapp(texto,number):
                                 {
                                     "id":"btncompra",
                                     "title" : "Comprar",
-                                    "description": "Compra los mejores articulos de tecnologia"
+                                    "description": "Compra los mejores articulos de entrenamiento"
                                 },
                                 {
                                     "id":"btnvender",
@@ -381,7 +381,7 @@ def enviar_mensajes_whatsapp(texto,number):
             "type": "text",
             "text": {
                 "preview_url": False,
-                "body": "🚀 Hola, soy bAIrb BOT.\n \n📌Por favor, ingresa un número #️⃣ para recibir información.\n \n1️⃣. Información del Curso. ❔\n2️⃣. Ubicación del local. 📍\n3️⃣. Enviar temario en PDF. 📄\n4️⃣. Audio explicando curso. 🎧\n5️⃣. Video de Introducción. ⏯️\n6️⃣. Hablar con AnderCode. 🙋‍♂️\n7️⃣. Horario de Atención. 🕜 \n0️⃣. Regresar al Menú. 🕜"
+                "body": "🚀 Hola, soy bAIrb BOT.\n \n📌Por favor, ingresa un número #️⃣ para recibir información.\n \n1️⃣. Información del Proyecto. ❔\n2️⃣. Ubicación del local. 📍\n3️⃣. Enviar PDF. 📄\n4️⃣. Audio explicando el proyecto. 🎧\n5️⃣. Video del mejor día. ⏯️\n6️⃣. Hablar con bAIrd. 🙋‍♂️\n7️⃣. Horario de Atención. 🕜 \n0️⃣. Regresar al Menú. 🕜"
             }
         }
 
