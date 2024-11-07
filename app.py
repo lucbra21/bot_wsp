@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
-# from datetime import datetime
 from datetime import timedelta, datetime, timezone
 import http.client
 import json
@@ -23,7 +22,6 @@ mensajes_log = []
 def agregar_mensajes_log(texto):
     mensajes_log.append(texto)
 
-    #Guardar el mensaje en la base de datos
     # Guardar el mensaje en la base de datos
     nuevo_registro = Log(
         texto=texto,
@@ -31,7 +29,6 @@ def agregar_mensajes_log(texto):
     )
     db.session.add(nuevo_registro)
     db.session.commit()
-
 
 #Crear la tabla si no existe
 with app.app_context():
@@ -391,7 +388,7 @@ def enviar_mensajes_whatsapp(texto,number):
     agregar_mensajes_log(data)
     headers = {
         "Content-Type" : "application/json",
-        "Authorization" : "Bearer EAAHlp1ycWFIBO9sPV69jXa0YpvXUSjnn2GHD0r0ELJjz0wq8rWfK4Vr9ECsVIVbZA4mt1BcVTnhnNqNvPZAWIqHKFhg4CjG8Ngc9303XtCQsGZA8ioR2qhNHM9mwCRCxVjZBRYUielojMjbAdXhgUmLq9NUTBaJubSXVf8q8KNscUPD3rDwLSi6SPuxNMAxDAZA7yx3lZApc56eK9lnsRQe7zRqTQ1ta4UkMDdEZCeHe4dERQZDZD"
+        "Authorization" : "Bearer EAAHlp1ycWFIBO1vDHgdnIDj1pz2rfPXNti0vPFuVkiPleLaZBtLY9K2DL07ZCgfnfbTmWuZAspTfppuLnNwZB53YqCKtMpZBtHAfZCMQOsz0nsaEJH2Sh4YmKWojCRkBgT4TY2u861OJlNFqQKQL7Rig7qsqMsR2JPGX9KCzkPeOvZAaO3N28ZCOw2Yj02Dj4hJQ6lfMGzcJYqzh36o7Y8BJTbZCShLyEkNkqz5rQCObXEl4ZD"
     }
 
     connection = http.client.HTTPSConnection("graph.facebook.com")
