@@ -1,13 +1,13 @@
 from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from datetime import timedelta, datetime, timezone
-from dotenv import load_dotenv # pip install python-dotenv
+# from dotenv import load_dotenv # pip install python-dotenv
 import http.client
 import json
 import os
 
 # Cargar variables desde el archivo .env
-load_dotenv(dotenv_path=".env")
+# load_dotenv(dotenv_path=".env")
 
 app = Flask(__name__)
 
@@ -391,10 +391,10 @@ def enviar_mensajes_whatsapp(texto,number):
     data=json.dumps(data)
     agregar_mensajes_log(json.dumps('llego hasta la linea 390'))
     agregar_mensajes_log(data)
-    token_wsp = os.getenv("token_wsp")
+    # token_wsp = os.getenv("token_wsp")
     headers = {
         "Content-Type" : "application/json",
-        "Authorization" : "Bearer " + token_wsp
+        "Authorization" : "Bearer EAAHlp1ycWFIBO1klGy18x9w2jPknaABXVgoBjQKmaScOxpaZBnctaWR7kCjtZCfNMxiS5JcnjChsZC7BLHHttKpFspfmqF3fUheSLtCyuzw9bZAROm3wbe68mZCMaoZADWgZBVs6a3voEFCQKoCbDTOOkDUZAM98HnVGay0U9mvaIyqaxFpmaKvuqK5LF4FAEq9f9bXDlZBpGgKATfJhiBJX9OcCqY1pZBoxkAiEfZBruNUNKsZD"
     }
 
     connection = http.client.HTTPSConnection("graph.facebook.com")
